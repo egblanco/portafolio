@@ -18,10 +18,7 @@ export default function Home() {
               I’ll Help You Build Your Dream
             </h1>
             <p className="pt-8 text-lg font-light leading-relaxed text-gray-600">
-              In quo quaerimus, non provident, similique sunt in voluptate et
-              inter argumentum conclusionemque. Tum dicere exorsus est et quasi
-              architecto beatae vitae dicta sunt, explicabo nemo. Certe inquam,
-              pertinax non emolumento
+              This is a test
             </p>
             <button className="flex items-center pb-2 mt-10 mr-3 text-xl Sf-ui-pro custom-foreground-color font-regular custom-border-bottom focus:outline-none">
               Connect with me
