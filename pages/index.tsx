@@ -46,7 +46,7 @@ function Card({ emoji, hueA, hueB, text, textColor }: Props) {
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.8 }}
     >
-      {/*<div className="splash" style={{ background }}></div>*/}
+      <div className="splash" style={{ background }}></div>
       <motion.div className="card" variants={cardVariants}>
         <div className="flex flex-col">
           <div> {emoji}</div>
