@@ -8,6 +8,8 @@ interface Props {
   emoji: string;
   hueA: number;
   hueB: number;
+  text: string;
+  textColor: string;
 }
 
 const cardVariants: Variants = {
@@ -25,19 +27,16 @@ const cardVariants: Variants = {
   },
 };
 
-const food: [string, number, number][] = [
-  ["🍅", 340, 10],
-  ["🍊", 20, 40],
-  ["🍋", 60, 90],
-  ["🍐", 80, 120],
-  ["🍏", 100, 140],
-  ["🍆", 260, 290],
-  ["🍇", 290, 320],
+const food: [string, number, number, string, string][] = [
+  ["🍅", 340, 10, "Dreams tomato", "text-red-500"],
+  ["🍊", 20, 40, "Create orange", "text-orange-500"],
+  ["🍋", 60, 90, "Eat pear", "text-yellow-500"],
+  ["🍏", 100, 140, "Share apple", "text-green-500"],
 ];
 
 const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
 
-function Card({ emoji, hueA, hueB }: Props) {
+function Card({ emoji, hueA, hueB, text, textColor }: Props) {
   const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`;
 
   return (
@@ -47,9 +46,14 @@ function Card({ emoji, hueA, hueB }: Props) {
       whileInView="onscreen"
       viewport={{ once: true, amount: 0.8 }}
     >
-      <div className="splash" style={{ background }} />
+      {/*<div className="splash" style={{ background }}></div>*/}
       <motion.div className="card" variants={cardVariants}>
-        {emoji}
+        <div className="flex flex-col">
+          <div> {emoji}</div>
+          <div className="justify-center mt-10 text-lg font-semibold text-center">
+            <span className={textColor}>{text}</span>
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -124,9 +128,16 @@ export default function Home() {
         <div className="flex flex-row">
           <div className="w-1/6"></div>
           <div className="flex flex-col justify-center w-4/6">
-            {food.map(([emoji, hueA, hueB]) => (
-              <div className="justify-center" key={emoji}>
-                <Card emoji={emoji} hueA={hueA} hueB={hueB} key={emoji} />
+            {food.map(([emoji, hueA, hueB, text, textColor]) => (
+              <div className="j" key={emoji}>
+                <Card
+                  emoji={emoji}
+                  hueA={hueA}
+                  hueB={hueB}
+                  text={text}
+                  textColor={textColor}
+                  key={emoji}
+                />
               </div>
             ))}
           </div>
