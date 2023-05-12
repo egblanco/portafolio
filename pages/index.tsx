@@ -1,7 +1,59 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { motion, Variants } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
+
+interface Props {
+  emoji: string;
+  hueA: number;
+  hueB: number;
+}
+
+const cardVariants: Variants = {
+  offscreen: {
+    y: 300,
+  },
+  onscreen: {
+    y: 50,
+    rotate: -10,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+const food: [string, number, number][] = [
+  ["🍅", 340, 10],
+  ["🍊", 20, 40],
+  ["🍋", 60, 90],
+  ["🍐", 80, 120],
+  ["🍏", 100, 140],
+  ["🍆", 260, 290],
+  ["🍇", 290, 320],
+];
+
+const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
+
+function Card({ emoji, hueA, hueB }: Props) {
+  const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`;
+
+  return (
+    <motion.div
+      className="card-container"
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}
+    >
+      <div className="splash" style={{ background }} />
+      <motion.div className="card" variants={cardVariants}>
+        {emoji}
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function Home() {
   return (
@@ -43,16 +95,42 @@ export default function Home() {
           </div>
           <div className="mt-8 xl-w-11/12 sm:w-1/2 sm:mt-0">
             <div className="flex items-center justify-center w-full rounded-full sm:justify-end">
-              <Image
-                src="/image/paola.png"
-                alt="Vercel Logo"
-                className="rounded-full dark:invert"
-                width={300}
-                height={300}
-                priority
-              />
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1.1, 1, 1],
+                  rotate: [0, 0, -10, 10, 0],
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeInOut",
+                  times: [0, 0.2, 0.5, 0.8, 1],
+                  repeatDelay: 1,
+                }}
+              >
+                <Image
+                  src="/image/paola.png"
+                  alt="Vercel Logo"
+                  className="rounded-full dark:invert"
+                  width={300}
+                  height={300}
+                  priority
+                />
+              </motion.div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-row">
+          <div className="w-1/6"></div>
+          <div className="flex flex-col justify-center w-4/6">
+            {food.map(([emoji, hueA, hueB]) => (
+              <div className="justify-center" key={emoji}>
+                <Card emoji={emoji} hueA={hueA} hueB={hueB} key={emoji} />
+              </div>
+            ))}
+          </div>
+          <div className="w-1/6"></div>
         </div>
       </section>
     </main>
