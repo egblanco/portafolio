@@ -29,9 +29,9 @@ const cardVariants: Variants = {
 
 const food: [string, number, number, string, string][] = [
   ["🍅", 340, 10, "Dreams tomato", "text-red-500"],
-  ["🍊", 20, 40, "Create orange", "text-orange-500"],
-  ["🍋", 60, 90, "Eat pear", "text-yellow-500"],
-  ["🍏", 100, 140, "Share apple", "text-green-500"],
+  ["🍊", 20, 40, "Creates orange", "text-orange-500"],
+  ["🍋", 60, 90, "Eats pear", "text-yellow-500"],
+  ["🍏", 100, 140, "Shares apple", "text-green-500"],
 ];
 
 const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
