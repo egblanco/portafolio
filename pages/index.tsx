@@ -42,11 +42,11 @@ export default function Home() {
             </button>
           </div>
           <div className="mt-8 xl-w-11/12 sm:w-1/2 sm:mt-0">
-            <div className="flex items-center justify-center w-full sm:justify-end">
+            <div className="flex items-center justify-center w-full rounded-full sm:justify-end">
               <Image
-                src="/image/hero.png"
+                src="/image/paola.png"
                 alt="Vercel Logo"
-                className="dark:invert"
+                className="rounded-full dark:invert"
                 width={300}
                 height={300}
                 priority
