@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,14 +68,14 @@ export default function Home() {
           <div className="flex flex-col items-start justify-center px-4 lg:w-6/12 md:w-6/12 lg:px-0">
             <p className="text-2xl font-light text-gray-800">
               Hi! I’am{" "}
-              <span className="font-semibold text-teal-500">Paola Rivero</span>{" "}
+              <span className="font-semibold text-teal-500">Paola Rivero</span>
               and
             </p>
             <h1 className="text-5xl font-extrabold leading-tight text-gray-800 sm:text-6xl md:text-4xl lg:text-6xl">
               I’ll Help You Build Your Dream
             </h1>
             <p className="pt-8 text-lg font-light leading-relaxed text-gray-600">
-              This is a test
+              <Link href="/my-work">Blog Post</Link>
             </p>
             <button className="flex items-center pb-2 mt-10 mr-3 text-xl Sf-ui-pro custom-foreground-color font-regular custom-border-bottom focus:outline-none">
               Connect with me
@@ -125,8 +126,8 @@ export default function Home() {
         <div className="flex flex-row">
           <div className="w-1/6"></div>
           <div className="flex flex-col justify-center w-4/6">
-            {food.map(([emoji, hueA, hueB, text, textColor]) => (
-              <div className="j" key={emoji}>
+            {food.map(([emoji, hueA, hueB, text, textColor], index) => (
+              <div id={emoji} className="j" key={emoji}>
                 <Card
                   emoji={emoji}
                   hueA={hueA}
